@@ -958,29 +958,86 @@ tr:hover td {
    ============================================ */
 
 @media (max-width: 900px) {
-  /* 1. Completely hide the hamburger menu */
+  /* 1. Restore the sliding sidebar drawer */
+  .sidebar {
+    width: 280px;
+    z-index: 95;
+    transform: translateX(-100%);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* 2. Remove the desktop margin and add bottom padding for the nav */
+  .main-area {
+    margin-left: 0;
+    padding-bottom: 85px; /* Ensures content doesn't hide behind bottom nav */
+  }
+
+  /* 3. Header adjustments */
+  .main-header {
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+
+  /* 4. Hide the hamburger menu (since we use the bottom nav now) */
   .icon-btn.mobile-menu-btn {
     display: none !important;
   }
 
-  /* 2. Clean up the header (hide ⌘K and Settings buttons on mobile) */
+  /* 5. Hide the desktop Settings/⌘K buttons */
   .main-header-actions [data-action="openCommandPalette"],
   .main-header-actions [data-action="openSettingsModal"] {
     display: none !important;
   }
 
-  /* 3. Force the bottom nav to show and sit above everything */
+  /* 6. Show the mobile brand logo */
+  .brand-mobile {
+    display: flex;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+  }
+
+  .account-select {
+    width: 130px;
+  }
+
+  .view-container {
+    padding: 1.25rem 1rem;
+  }
+
+  /* 7. Calendar mobile view logic */
+  .calendar-desktop-view {
+    display: none;
+  }
+
+  .calendar-mobile-view {
+    display: flex;
+  }
+
+  /* 8. Drawer (day details) mobile adjustments */
+  .drawer {
+    width: 100%;
+    top: auto;
+    height: 75vh;
+    border-left: none;
+    border-top: 1px solid var(--border-glow);
+    transform: translateY(100%);
+  }
+
+  .drawer.active {
+    transform: translateY(0);
+  }
+
+  /* 9. Force the bottom nav to show */
   .mobile-bottom-nav {
     display: flex !important;
     z-index: 9999;
   }
 
-  /* 4. Push content up so nothing gets hidden behind the bottom nav */
-  .main-area {
-    padding-bottom: 85px;
-  }
-
-  /* 5. Move the bulk action bar above the bottom nav */
+  /* 10. Move the bulk action bar up */
   .bulk-bar {
     bottom: 85px !important;
   }
