@@ -2168,3 +2168,91 @@ tr.flash-update td {
   animation: btnSuccess 0.4s ease-out forwards;
   pointer-events: none;
 }
+
+/* ============================================
+   STEP 10 — MOBILE BOTTOM NAVIGATION
+   ============================================ */
+
+.mobile-bottom-nav {
+  display: none; /* Hidden on desktop */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  z-index: 100;
+  /* Support for iPhone home indicator safe area */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.mbn-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: var(--transition);
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mbn-item svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  transition: var(--transition);
+}
+
+.mbn-item.active {
+  color: var(--accent-primary);
+}
+
+.mbn-item.active svg {
+  filter: drop-shadow(0 0 6px var(--accent-primary));
+  transform: translateY(-1px);
+}
+
+.mbn-item:active {
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  /* Hide the hamburger menu since we have the bottom nav */
+  .mobile-menu-btn {
+    display: none !important;
+  }
+
+  /* Push content up so it doesn't hide behind the bottom nav */
+  .main-area {
+    padding-bottom: 60px;
+  }
+
+  /* Move the bulk action bar up so it floats above the bottom nav */
+  .bulk-bar {
+    bottom: 75px !important;
+  }
+
+  /* Adjust freshness pill margin */
+  .freshness-strip {
+    margin-bottom: 1rem;
+  }
+}
