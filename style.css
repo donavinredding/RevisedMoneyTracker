@@ -958,96 +958,31 @@ tr:hover td {
    ============================================ */
 
 @media (max-width: 900px) {
-  .sidebar {
-    width: 280px;
-    z-index: 95;
-    transform: translateX(-100%);
-    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .main-area {
-    margin-left: 0;
-  }
-
-  .main-header {
-    padding: 0 1rem;
-    gap: 0.5rem;
-  }
-
+  /* 1. Completely hide the hamburger menu */
   .icon-btn.mobile-menu-btn {
-    display: inline-flex;
+    display: none !important;
   }
 
-  .brand-mobile {
-    display: flex;
-    font-size: 0.82rem;
-    letter-spacing: 0.06em;
+  /* 2. Clean up the header (hide ⌘K and Settings buttons on mobile) */
+  .main-header-actions [data-action="openCommandPalette"],
+  .main-header-actions [data-action="openSettingsModal"] {
+    display: none !important;
   }
 
-  .account-select {
-    width: 130px;
+  /* 3. Force the bottom nav to show and sit above everything */
+  .mobile-bottom-nav {
+    display: flex !important;
+    z-index: 9999;
   }
 
-  .view-container {
-    padding: 1.25rem 1rem;
+  /* 4. Push content up so nothing gets hidden behind the bottom nav */
+  .main-area {
+    padding-bottom: 85px;
   }
 
-  body.storage-warn-active .sidebar {
-    top: 44px;
-    height: calc(100vh - 44px);
-  }
-
-  .calendar-desktop-view {
-    display: none;
-  }
-
-  .calendar-mobile-view {
-    display: flex;
-  }
-
-  .drawer {
-    width: 100%;
-    top: auto;
-    height: 75vh;
-    border-left: none;
-    border-top: 1px solid var(--border-glow);
-    transform: translateY(100%);
-  }
-
-  .drawer.active {
-    transform: translateY(0);
-  }
-
+  /* 5. Move the bulk action bar above the bottom nav */
   .bulk-bar {
-    width: 90%;
-    max-width: 500px;
-    bottom: 1rem;
-    justify-content: center;
-    padding: 0.6rem 0.85rem;
-    gap: 0.4rem;
-  }
-
-  .bulk-bar .btn {
-    padding: 0.35rem 0.6rem;
-    font-size: 0.75rem;
-  }
-
-  .forecaster-header-flex {
-    flex-direction: column;
-    align-items: stretch !important;
-    gap: 0.75rem !important;
-  }
-
-  .forecaster-header-flex .btn {
-    width: 100%;
-  }
-
-  .forecast-split-grid {
-    grid-template-columns: 1fr;
+    bottom: 85px !important;
   }
 }
 

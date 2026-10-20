@@ -1023,7 +1023,10 @@ class MoneyTrackerApp {
     this.cleanSpotify();
     this.recalculateLoanBalances();
     this.renderTabContent(this.currentTab);
-    this.injectMobileNav();
+    
+    // 👇 ENSURE THIS LINE IS HERE 👇
+    this.injectMobileNav();         
+    
     this.bindGlobalEvents();
     this.checkStorageHealth();
     setTimeout(() => this._flushState(), 100);
