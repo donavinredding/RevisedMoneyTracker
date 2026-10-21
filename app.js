@@ -3196,6 +3196,8 @@ class MoneyTrackerApp {
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     ctx.clearRect(0, 0, rect.width, H);
 
+    const cc = this._chartColors();
+
     if (!schedule || schedule.length === 0) {
       ctx.fillStyle = cc.textMuted; ctx.font = '12px Inter'; ctx.textAlign = 'center';
       ctx.fillText('Adjust P&I to see the payoff projection.', rect.width / 2, H / 2);
@@ -4107,6 +4109,8 @@ class MoneyTrackerApp {
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     ctx.clearRect(0, 0, rect.width, 260);
 
+    const cc = this._chartColors();
+
     const allTxs = this.state.transactions.filter(t => t.status !== 'estimated')
       .sort((a, b) => new Date(a.date) - new Date(b.date));
     const vaultTotal = this.getBalances('SAVINGS').vaults;
@@ -4201,6 +4205,8 @@ onSpendingCustomInput(val) {
   canvas.height = 240 * window.devicePixelRatio;
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
   ctx.clearRect(0, 0, rect.width, 240);
+
+  const cc = this._chartColors();
 
   // --- NEW DATE FILTERING LOGIC ---
   const now = new Date();
@@ -4303,6 +4309,8 @@ onSpendingCustomInput(val) {
     canvas.height = 220 * window.devicePixelRatio;
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     ctx.clearRect(0, 0, rect.width, 220);
+
+    const cc = this._chartColors();
 
     const gv = id => parseFloat(document.getElementById(id)?.value) || 0;
     const avgInc = gv('fcAvgIncome'), avgFix = gv('fcAvgFixed'), avgVar = gv('fcAvgVariable');
